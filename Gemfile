@@ -10,6 +10,9 @@ gem 'bootstrap-sass', '3.2.0.0'
 #correct problem when trying to install picture upload with carrierwave etc
 gem 'net-ssh', '~> 3.0', '>= 3.0.1'
 
+#accessing amazon s3 storage
+gem 'carrierwave-aws'
+
 #for secure passwords
 gem 'bcrypt', '3.1.7'
 gem 'faker', '1.4.2'
