@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_save :downcase_email
 	before_create :create_activation_digest
+	
+	mount_uploader :picture, ProfilePictureUploader
 		
 	validates :name, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -24,6 +26,8 @@ class User < ActiveRecord::Base
 		uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, length: { minimum: 6 }, allow_blank: true
+	
+	validate :picture_size
 	
 	# Returns the hash digest of the given string.
 	def User.digest(string)
@@ -116,5 +120,12 @@ class User < ActiveRecord::Base
 	def create_activation_digest
 		self.activation_token = User.new_token
 		self.activation_digest = User.digest(activation_token)
+	end
+	
+	# Validates the size of an uploaded picture.
+	def picture_size
+		if picture.size > 5.megabytes
+			errors.add(:picture, "Picture size should be less than 5 MB")
+		end
 	end
 end

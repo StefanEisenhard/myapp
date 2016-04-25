@@ -1,8 +1,13 @@
 <li>
-	<%= gravatar_for user, size: 50 %>
+	<% if user.picture? %>
+		<%= image_tag(user.picture, width: '50') %>
+	<% else %>
+		<%= image_tag("DefaultProfileIcon.png", width: '50', alt: "Profile Picture") %>
+	<% end %>
+	<br>
 	<%= link_to user.name, user %>
 	<% if current_user.admin? && !current_user?(user) %>
 			| <%= link_to "delete", user, method: :delete,
-		data: { confirm: "You sure?" } %>
+		data: { confirm: "Are you sure?" } %>
 	<% end %>
 </li>
