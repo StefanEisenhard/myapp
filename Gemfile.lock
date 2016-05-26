@@ -228,6 +228,8 @@ GEM
       video_info (~> 2.4)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
+    magic (0.2.9)
+      ffi (>= 0.6.3)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.6.1)
@@ -285,7 +287,6 @@ GEM
       nokogiri (>= 1.4.1)
       trollop
     rdoc (4.2.0)
-    ruby-filemagic (0.7.1)
     ruby-ll (2.1.2)
       ansi
       ast
@@ -358,13 +359,13 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   link_thumbnailer
+  magic
   mini_magick (= 3.8.0)
   mysql2
   net-ssh (~> 3.0, >= 3.0.1)
   pg (= 0.17.1)
   rails (= 4.2.1)
   rails_12factor (= 0.0.2)
-  ruby-filemagic (~> 0.7.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

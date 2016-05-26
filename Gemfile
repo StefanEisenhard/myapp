@@ -29,7 +29,9 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'link_thumbnailer'
 
 #get type of files
-gem 'ruby-filemagic', '~> 0.7.1'
+#filemagic macht probleme auf heroku, daher workaround mit magic 
+#gem 'ruby-filemagic', '~> 0.7.1'
+gem 'magic'
 
 # Use mysql as the database for Active Record
 gem 'mysql2'

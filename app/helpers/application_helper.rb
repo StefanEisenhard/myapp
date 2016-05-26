@@ -22,9 +22,9 @@ module ApplicationHelper
 	
 	def check4video(microposturl)
 		begin
-			require 'filemagic'
+			require 'magic'
 			filewithpath = "./public#{microposturl}"
-			res = FileMagic.new(FileMagic::MAGIC_MIME).file(filewithpath)
+			res = Magic.guess_file_mime(filewithpath)
 			res.start_with? 'video'
 		rescue =>e
 			nil
@@ -33,9 +33,9 @@ module ApplicationHelper
 	
 	def check4image(microposturl)
 		begin
-			require 'filemagic'
+			require 'magic'
 			filewithpath = "./public#{microposturl}"
-			res = FileMagic.new(FileMagic::MAGIC_MIME).file(filewithpath)
+			res = Magic.guess_file_mime(filewithpath)
 			res.start_with? 'image'
 		rescue =>e
 			nil
