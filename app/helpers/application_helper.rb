@@ -22,9 +22,17 @@ module ApplicationHelper
 	
 	def check4video(microposturl)
 		begin
+			Rails.logger = Logger.new(STDOUT)
+			logger.info "\nStart check4video"
+			
 			require 'magic'
+			
 			filewithpath = "./public#{microposturl}"
+			logger.info "filewithpath: #{filewithpath}"
+			
 			res = Magic.guess_file_mime(filewithpath)
+			logger.info "res: #{res}"
+			
 			res.start_with? 'video'
 		rescue =>e
 			nil
@@ -33,9 +41,17 @@ module ApplicationHelper
 	
 	def check4image(microposturl)
 		begin
+			Rails.logger = Logger.new(STDOUT)
+			logger.info "\nStart check4image"
+			
 			require 'magic'
+			
 			filewithpath = "./public#{microposturl}"
+			logger.info "filewithpath: #{filewithpath}"
+			
 			res = Magic.guess_file_mime(filewithpath)
+			logger.info "res: #{res}"
+			
 			res.start_with? 'image'
 		rescue =>e
 			nil
