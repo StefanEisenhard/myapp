@@ -30,7 +30,12 @@ module ApplicationHelper
 			
 			require 'magic'
 			
-			filewithpath = "./public#{microposturl}"
+			if Rails.env.production?
+				filewithpath = "#{microposturl}"
+			else
+				filewithpath = "./public#{microposturl}"
+			end
+			
 			logger.info "filewithpath: #{filewithpath}"
 			
 			res = Magic.guess_file_mime(filewithpath)
@@ -49,7 +54,12 @@ module ApplicationHelper
 			
 			require 'magic'
 			
-			filewithpath = "./public#{microposturl}"
+			if Rails.env.production?
+				filewithpath = "#{microposturl}"
+			else
+				filewithpath = "./public#{microposturl}"
+			end
+			
 			logger.info "filewithpath: #{filewithpath}"
 			
 			res = Magic.guess_file_mime(filewithpath)
