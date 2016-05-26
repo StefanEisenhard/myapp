@@ -14,7 +14,10 @@ module ApplicationHelper
 	
 	def generate_url_attributes_preview(micropostcontent)
 		begin
+			Rails.logger = Logger.new(STDOUT)
+			logger.info "\nStart generate_url_attributes_preview"
 			url_attributes = LinkThumbnailer.generate(micropostcontent)
+			logger.info "url_attributes: #{url_attributes}"			
 		rescue =>e
 			nil
 		end
